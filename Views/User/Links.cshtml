@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SaveLink.Models.Link>
+
+@foreach (var l in Model)
+{
+    <div class="row" id="@l.Id">
+        <input id="@l.Id" type="checkbox">
+        <div class="link">
+            <a href="@l.Url" target="blank">@l.Url</a>
+        </div>
+        <div class="description">@l.Description</div>
+        <ul type="none" id="menu">
+            <li>
+                <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#@l.Id.ToString()" href="/User/EditLink/@l.Id"><img src="~/Content/img/edit.png" title="редактировать"></a>
+
+                @*<img id="@l.Id" src="~/Content/img/menu.png">
+                <ul class="last_menu" type="none">
+                    <li>@Ajax.ActionLink("Редактировать", "EditLink", "User", new { id = l.Id }, new AjaxOptions { UpdateTargetId = l.Id.ToString() })</li>
+                    <li><a data-ajax="true" href="/User/DelLink/@l.Id" data-ajax-mode="replace" data-ajax-update="#workzone" onclick="RemoveLink(this)">Удалить</a></li>
+                </ul>*@
+            </li>
+        </ul>
+    </div>
+}

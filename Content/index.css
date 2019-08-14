@@ -1,0 +1,131 @@
+﻿body {
+    min-width: 900px;
+    background-color: #464646;
+}
+
+.z1 {
+    font-size:40px;
+}
+.z2 {
+    font-size: 23px;
+}
+.z1, .z2 {
+    color: white;
+    font-family: Segoe UI Light;
+}
+
+div {
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.head {
+    font-family: Segoe UI Light;
+    font-weight:bold;
+    background-color: #464646;
+    color: white;
+    height: 50px;
+    font-size: 30px;
+}
+
+.signIn {
+    float: right;
+    font-weight: lighter;
+    font-size: 23px;
+}
+    .signIn a {
+        color:white;
+        text-decoration: none;
+    }
+    /*Форма*/
+    .add_link form {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 6%;
+}
+
+.add_link form input, textarea, select {
+    width: 100%;
+    padding: 20px;
+    font-size:18px;
+    border-radius: 4px;
+    margin-bottom: 17px;
+}
+
+.form_left {
+    float: left;
+    width: 60%;
+}
+
+.form_left input, textarea {
+    background-color: #3b3b3b;
+    border: #3b3b3b;
+    color: #b2b2b2;
+}
+
+.form_left textarea {
+    resize: none;
+}
+
+.form_right {
+    float: left;
+    width: 40%;
+}
+
+.form_right select, input {
+    border: none;
+}
+
+.btn_submit {
+    color: lightgrey;
+    border: #747474;
+    background-color: #747474;
+    cursor: pointer;
+    
+}
+
+.btn_submit:hover {
+    background-color: #898989;
+
+}
+
+.form_disable {
+    background: #5c5c5c;
+    color: #5c5c5c;
+}
+
+#save_link {
+    margin-top:40px;
+    width:150px;
+}
+.save {
+    clear:left;
+}
+/*футер*/
+.footer {
+    position:fixed;
+    bottom:0px;
+    width:100%;  
+    background-color: #464646;
+    color: #939393;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+/*форма входу*/
+
+.form_container {
+    padding-top:6%;
+    width: 50%;
+    margin: 0 auto;
+}
+    .form_container .btn_submit {
+        width: 150px;
+    }
+

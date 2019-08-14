@@ -1,0 +1,194 @@
+﻿@model IEnumerable<SaveLink.Models.Category>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .remove_share_link,
+    .save_share_link,
+    .info_message,
+    .time,
+    .description_message {
+        padding: 2px;
+        margin: 3px;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+    .remove_share_link {
+        border: 1px solid #ec5b5b;
+        color: #ec5b5b;
+    }
+
+    .save_share_link {
+        border: 1px solid #f6f706;
+        color: #f6f706;
+        cursor: pointer;
+    }
+
+    .info_message {
+    }
+</style>
+<div class="tabs">
+
+    <a id="tab_links" data-ajax="true" href="/User/Workzone/" data-ajax-mode="replace" data-ajax-update="#cat_and_workzone" onclick="">Cсылки</a>
+    <a class="active_tab" id="tabs_share" data-ajax="true" href="/User/SharedLinks/?check=1" data-ajax-mode="replace" data-ajax-update="#cat_and_workzone" onclick="">Отправленные</a>
+
+
+</div>
+<div id="cat_and_workzone">
+    <div class="category">
+        <ul type="none" class="ul_category">
+            <li class="search">
+                @using (Ajax.BeginForm("Links", "User", new AjaxOptions { UpdateTargetId = "workzone" }))
+                {
+                    <input type="search" name="search" placeholder="Найти...">
+                }
+            </li>
+            @foreach (var c in ViewBag.Sender)
+            {
+                if (c.Sender != Session["Email"].ToString())
+                {
+                    <li id="" num="" class="">
+                        <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#workzone" href="/User/ViewSharedLinks/?login_sender=@c.Sender">@c.Sender</a>
+                        <div style="padding:0;"><a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#cat_and_workzone" href="/User/SharedLinks/?delname=@c.Sender"><img title="удалить" width="18px" src="~/Content/img/del.png"></a></div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    <div class="workzone" id="workzone">
+
+        @foreach (var l in ViewBag.Shared)
+        {
+
+            if (l.Sender == Session["Email"].ToString())
+            {
+
+                <div style="text-align:center; color:white;" class="row" id="@l.Id">
+                    <div class="info_message">
+                        <a id="@l.Id" class="remove_share_link" data-ajax="true" href="/User/CancelSharedLinks/@l.Id" data-ajax-mode="replace" data-ajax-update="#workzone">Отменить</a>
+                        Ви<br>
+                    </div>
+                    <div class="time">  @l.DateTime</div>
+                    <div class="description_message">@l.Description </div>
+
+                @foreach (var link in l.Links)
+                {
+                    <div class="row" id="@l.Id">
+                        <input id="@link.Id" type="checkbox">
+                        <div class="link">
+                            <a href="@link.Url" target="blank">@link.Url</a>
+                        </div>
+                        <div class="description">@link.Description</div>
+                        @*<ul type="none" id="menu">
+                            <li>
+                                <img id="@link.Id" src="~/Content/img/menu.png">
+                                <ul class="last_menu" type="none">
+                                    <li>@Ajax.ActionLink("Редактировать", "EditLink", "User", new { id = link.Id }, new AjaxOptions { UpdateTargetId = l.Id.ToString() })</li>
+                                    <li><a data-ajax="true" href="/User/DelLink/@link.Id" data-ajax-mode="replace" data-ajax-update="#workzone" onclick="RemoveLink(this)">Удалить</a></li>
+                                </ul>
+                            </li>
+                        </ul>*@
+                    </div>
+                }
+                </div>
+            }
+            else
+            {
+
+                <div style="text-align:center; color:white; background-color:#464646;" class="row" id="@l.Id">
+                    <div class="info_message">
+                        <!--кнопка сохранения розшаренных ссылок-->
+                        <a id="@l.Id" class="save_share_link">Сохранить</a>
+                        @l.Sender
+                    </div>
+                    <div class="time"> @l.DateTime</div>
+                    <div class="description_message">@l.Description</div>
+
+
+                    @foreach (var link in l.Links)
+                    {
+                        <div class="row" id="@l.Id">
+                            <input id="@link.Id" type="checkbox">
+                            <div class="link">
+                                <a href="@link.Url" target="blank">@link.Url</a>
+                            </div>
+                            <div class="description">@link.Description</div>
+                            @*<ul type="none" id="menu">
+                                    <li>
+                                        <img id="@link.Id" src="~/Content/img/menu.png">
+                                        <ul class="last_menu" type="none">
+                                            <li>@Ajax.ActionLink("Редактировать", "EditLink", "User", new { id = l.Id }, new AjaxOptions { UpdateTargetId = l.Id.ToString() })</li>
+                                            <li><a data-ajax="true" href="/User/DelLink/@link.Id" data-ajax-mode="replace" data-ajax-update="#workzone" onclick="RemoveLink(this)">Удалить</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>*@
+                        </div>
+                    
+                    }
+                </div>
+            }
+
+        }
+</div>
+
+<div class="add_link">
+    @using (Ajax.BeginForm("AddLink", "User", new AjaxOptions { UpdateTargetId = "cat_and_workzone", OnComplete = "OnCompleteAddLink" }, new { id = "FormAddLink" }))
+    {
+        <div class="form_left">
+            <input placeholder="Вставить URL" type="text" name="Url" id="Link" required="" />
+            <textarea name="Description" id="Description" placeholder="Введите заметку к ссылке" required=""></textarea>
+        </div>
+
+        <div class="form_right">
+            <select name="CategoryId" id="category" required="">
+                <option value="0">выберите категорию</option>
+                @foreach (var c in Model)
+                {
+                    <option value="@c.Id">@c.Name</option>
+                }
+            </select>
+
+            <input type="text" name="Name" id="Name" placeholder="Введите новую категорию" required="" />
+
+            <input class="btn_submit" type="submit" id="save_link" value="Добавить">
+        </div>
+    }
+</div>
+<div class="share_link">
+    @using (Ajax.BeginForm("SharedLinks", "User", new AjaxOptions { UpdateTargetId = "cat_and_workzone", OnComplete = "OnCompleteShared" }, new { id = "FormShareLinks" }))
+    {
+        <div class="form_left">
+            <input type="hidden" id="shared_links" name="SharedLinks" value="">
+            <input placeholder="Введите логин получателя" type="text" name="Recipient" id="Recipient" />
+            <textarea name="Description" id="Description" placeholder="Введите описание к сылкам" required=""></textarea>
+        </div>
+
+        <div class="form_right">
+            <p><img src="~/Content/img/share.png" align="left">Что бы поделиться выбранными ссылками - введите логин пользователя, описание если нужно и нажмите отправить.</p>
+            <input class="btn_submit" type="submit" id="share_links" value="Отправить">
+        </div>
+    }
+</div>
+ <div class="save_share_link_form">
+        @using (Ajax.BeginForm("SaveSharedLinks", "User", new AjaxOptions { UpdateTargetId = "cat_and_workzone" }, new { id = "FormSaveSharedLinks" }))
+        {
+            <input id="ShareID" type="hidden" name="ShareID">
+            <div class="form_l">
+                <select name="Category_Id" id="Category_Id" required="">
+                    <option value="0">выберите категорию</option>
+                    @foreach (var c in Model)
+                    {
+                        <option value="@c.Id">@c.Name</option>
+                    }
+                </select>
+
+                <input type="text" name="NameCategory" id="NameCategory" placeholder="Введите новую категорию" required="" />
+
+                <input class="btn_submit" type="submit" id="save_share_link" value="Сохранить">
+            </div>
+            <div class="form_r">
+                <p><img src="~/Content/img/save.png" align="left">Сохраните отправленные для вас ссылки в существующую или новую вкладку.</p>
+            </div>
+        }
+</div>

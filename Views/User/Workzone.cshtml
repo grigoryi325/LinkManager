@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SaveLink.Models.Category>
+
+<script>
+    $(function () {
+        EnterFirstCategory();
+    });
+</script>
+<div class="category">
+    <ul type="none" class="ul_category">
+        <li class="search">
+            @using (Ajax.BeginForm("Links", "User", new AjaxOptions { UpdateTargetId = "workzone" }))
+            {
+                <input type="search" name="search" placeholder="Найти...">
+            }
+        </li>
+        @foreach (var c in Model)
+        {
+            <li id="@c.Id" num="@c.Id" class="@c.Id">
+                @Ajax.ActionLink(c.Name, "Links", "User", new { id = c.Id }, new AjaxOptions { UpdateTargetId = "workzone" })
+                <div><img id="@c.Id" title="Меню" width="20px" src="~/Content/img/edit.svg"></div>
+                <ul id="last_menu" type="none">
+                    <li id="@c.Id" class="edit">Редактировать</li>
+                    <li id="delete" name="@c.Name">Удалить</li>
+                </ul>
+            </li>
+        }
+    </ul>
+</div>
+<div class="workzone" id="workzone">
+    @foreach (var l in ViewBag.links)
+    {
+        <div class="row" id="@l.Id">
+            <input id="@l.Id" type="checkbox">
+            <div class="link">
+                <a href="@l.Url" target="blank">@l.Url</a>
+            </div>
+            <div class="description">@l.Description</div>
+            <ul type="none" id="menu">
+                <li>               
+                    <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#@l.Id.ToString()" href="/User/EditLink/@l.Id"><img src="~/Content/img/edit.png"></a>
+                </li>
+            </ul>
+        </div>
+    }
+</div>

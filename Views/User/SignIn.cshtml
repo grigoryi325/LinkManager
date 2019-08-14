@@ -1,0 +1,38 @@
+﻿<html>
+<head>
+    <title>YTD</title>
+    <link href="~/Content/index.css" rel="stylesheet">
+    <link href="~/Content/account.css" rel="stylesheet">
+</head>
+<body link="#929292" alink="#929292" vlink="#929292">    
+
+    <div class="wrapper" id="wrapper">
+
+        <div class="head">
+            LOGO
+            <div class="signIn">
+                <a href="/User/SignIn">Вход</a>
+            </div>
+        </div>
+
+        <div id="block">
+            <div class="form_container">
+                <p class="z1" align="center">Вход</p>
+
+                <div class="add_link">
+                    <h2 align="center" class="errors">@ViewBag.ErrorLogining</h2>
+                    <form method="post" action="/User/SignIn/">
+
+                        <input type="text" name="Email" id="Login" placeholder="введите логин" required="" />
+                        <input type="password" name="Password" id="Password" placeholder="введите пароль" required="" />
+
+                        <p align="center"><input class="logining" type="submit" id="enter" value="Войти"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer"> © 2019 ВСЕ ПРАВА ЗАЩИЩЕНЫ</div>
+</body>
+</html>

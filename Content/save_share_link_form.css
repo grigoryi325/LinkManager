@@ -1,0 +1,49 @@
+﻿.save_share_link_form {
+    display: none;
+    float: left;
+    /*width: 78.5%;*/
+    width: 80%;
+    background-color: #5c5c5c;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.save_share_link_form form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.save_share_link_form form input, select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 17px;
+    border:none;
+}
+
+.share_link p {
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.form_l{
+    width:60%;
+    float:left;
+}
+
+.form_r {
+    width: 40%;
+    color: white;
+    float: left;
+    font-size: 16px;
+}
+
+.save_share_link_form .form_r img {
+    width: 34%;
+    margin-right: 15px;
+}
+
+.light {
+    box-shadow: 0px 4px 2px -2px #06bdf7;
+}

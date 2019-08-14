@@ -1,0 +1,52 @@
+.add_link form{
+    width:80%;
+	margin:0 auto;
+}
+
+.add_link form input, textarea, select{
+	width:100%;
+	padding:8px;
+	border-radius: 4px;
+	margin-bottom: 17px;
+}
+
+.form_left{
+	float:left;
+	width:60%;
+}
+
+.form_left input, textarea{
+	background-color: #3b3b3b;
+	border: #3b3b3b;
+	color: #b2b2b2;
+}
+
+.form_left textarea{
+	height: 82px;
+	resize: none;
+}
+
+.form_right{
+	float:left;
+	width:40%;
+}
+
+.form_right select, input{
+	border:none;
+}
+
+.btn_submit{
+	color: lightgrey;
+	border: #747474;
+	background-color: #747474;
+	cursor:pointer;
+}
+
+.btn_submit:hover {
+    background-color: #898989;
+}
+
+.form_disable {
+    background: #5c5c5c;
+    color: #5c5c5c;
+}

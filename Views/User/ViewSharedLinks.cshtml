@@ -1,0 +1,86 @@
+﻿<style>
+    .remove_share_link,
+    .save_share_link,
+    .info_message,
+    .time,
+    .description_message {
+        padding: 2px;
+        margin: 3px;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+    .remove_share_link {
+        border: 1px solid #ec5b5b;
+        color: #ec5b5b;
+    }
+
+    .save_share_link {
+        border: 1px solid #f6f706;
+        color: #f6f706;
+        cursor:pointer;
+    }
+
+    .info_message {
+    }
+</style>
+<script>
+    $(function () {
+        NewSharedMessages();
+    });
+</script>
+@foreach (var l in ViewBag.Shared)
+{
+
+    if (l.Sender == Session["Email"].ToString())
+    {
+
+        <div style="text-align:center; color:white" class="row" id="@l.Id">
+            <div class="info_message">
+                <a id="@l.Id" class="remove_share_link" data-ajax="true" href="/User/CancelSharedLinks/@l.Id" data-ajax-mode="replace" data-ajax-update="#workzone">Отменить</a>
+                Ви
+            </div>
+
+            <div class="time">@l.DateTime</div>
+            <div class="description_message">@l.Description</div>
+
+
+            @foreach (var link in l.Links)
+            {
+                <div class="row" id="@l.Id">
+                    <input id="@link.Id" type="checkbox">
+                    <div class="link">
+                        <a href="@link.Url" target="blank">@link.Url</a>
+                    </div>
+                    <div class="description">@link.Description</div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+
+        <div style="text-align:center; color:white; background-color:#464646" class="row" id="@l.Id" newlinks="@l.NewShared">
+            <div class="info_message">
+                <!--кнопка сохранения розшаренных ссылок-->
+                <a id="@l.Id" class="save_share_link">Сохранить</a>
+                @l.Sender
+            </div>
+            <div class="time"> @l.DateTime</div>
+            <div class="description_message">@l.Description</div>
+
+
+
+            @foreach (var link in l.Links)
+            {
+                <div class="row" id="@l.Id">
+                    <input id="@link.Id" type="checkbox">
+                    <div class="link">
+                        <a href="@link.Url" target="blank">@link.Url</a>
+                    </div>
+                    <div class="description">@link.Description</div>
+                </div>
+            }
+        </div>
+    }
+}

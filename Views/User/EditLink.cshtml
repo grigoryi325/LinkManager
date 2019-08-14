@@ -1,0 +1,11 @@
+﻿@using (Ajax.BeginForm("SaveEditLink", "User", new { id = ViewBag.Link.Id }, new AjaxOptions { UpdateTargetId = ViewBag.Link.Id.ToString() }))
+{
+    <input id="@ViewBag.Link.Id" type="checkbox">
+    <div class="link">
+        <textarea id="url" name="Url" required="">@ViewBag.Link.Url</textarea>
+    </div>
+    <div class="description" style="padding: 5px;"><textarea id="editdescription" name="Description" required="">@ViewBag.Link.Description</textarea></div>
+
+    <input title="сохранить" type="submit" value="ok" id="save_changes">
+}
+

@@ -1,0 +1,74 @@
+﻿<html>
+<head>
+
+    <title>YTD</title>
+
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/category.css" rel="stylesheet">
+    <link href="~/Content/workzone.css" rel="stylesheet">
+    <link href="~/Content/scroll.css" rel="stylesheet">
+    <link href="~/Content/form_add_link.css" rel="stylesheet">
+    <link href="~/Content/account.css" rel="stylesheet">
+    <link href="~/Content/AlertWindow.css" rel="stylesheet">
+    <link href="~/Content/Dropmenu.css" rel="stylesheet">
+    <link href="~/Content/edit_link.css" rel="stylesheet">
+    <link href="~/Content/tabs.css" rel="stylesheet">
+    <link href="~/Content/share_link_form.css" rel="stylesheet">
+    <link href="~/Content/save_share_link_form.css" rel="stylesheet" />   
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+</head>
+<body link="#929292" alink="#929292" vlink="#929292">
+    <div class="wrapper" id="wrapper">
+        <div class="head">
+            LOGO
+            <div class="Account">
+
+                <span class="alert"><b style="font-size:20px">@Session["Email"]</b> Изменить данные аккаунта</span>
+
+                <div class="change">
+                    <img id="close" src="~/Content/img/cancel.png">
+                    <h3>Ваш Логин и Пароль</h3>
+                    <p>При первом входе Логин и Пароль генерируються автоматически, изменить их можно в любое время, просто введите новые данные и нажмите сохранить</p>
+                    <form method="post" action="/User/ChangeAccountData/">
+                        <input type="hidden" name="Id" value="@Session["Id"]">
+                        <input type="hidden" name="LastEmail" value="@Session["Email"]">
+                        <input type="hidden" name="LastPass" value="@Session["Password"]">
+
+
+                        <label class="errors"></label><br>
+
+
+                        <label for="Login">Логин</label>
+                        <input type="text" name="Email" id="Login" placeholder="введите логин" required="" value="@Session["Email"]" /><br>
+
+                        <label for="Password">Пароль</label>
+                        <input type="password" name="Password" id="Password" placeholder="введите пароль" required="" value="@Session["Password"]" />
+                        <span id="show_pass"><img src="~/Content/img/show.png"></span>
+
+                        <p align="center"><input class="btn_submit" type="submit" id="enter" value="Сохранить"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        @RenderBody()
+
+        <div class="footer"> © 2019 ВСЕ ПРАВА ЗАЩИЩЕНЫ</div>
+    </div>
+
+
+
+    <script src="~/Scripts/UserScripts/window_change_account_data.js" defer></script>
+    <script src="~/Scripts/UserScripts/tabs.js" defer></script>
+    <script src="~/Scripts/UserScripts/reset_forms.js" defer></script>
+    <script src="~/Scripts/UserScripts/form_add_link.js" defer></script>
+    <script src="~/Scripts/UserScripts/form_save_shared_links.js" defer></script>
+    <script src="~/Scripts/UserScripts/links_category.js" defer></script>   
+    <script src="~/Scripts/UserScripts/shared_links.js" defer></script>
+    <script src="~/Scripts/UserScripts/view_result.js" defer></script>
+
+</body>
+</html>

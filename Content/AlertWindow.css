@@ -1,0 +1,147 @@
+﻿/*ОКНО ПРЕДУПРЕЖДЕНИЕ УДАЛЕНИЯ КАТЕГОРИИ*/
+.window_del_cat {
+    display: none;
+    font-family: Segoe UI Light;
+    position: absolute;
+    z-index: 10;
+    background-color: #464646;
+    color: white;
+    top: 30%;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    width: 400px;
+    animation: size_window_del 0.1s;
+    animation-fill-mode: forwards;
+}
+
+    .window_del_cat .head {
+        font-size:18px;
+    }
+
+
+.blur {
+    -webkit-filter: blur(4px);
+    animation: show_window_del 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.cancel_blur {
+    animation: close_window_del 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes size_window_del {
+    0% {
+        height: 100px;
+    }
+
+    100% {
+        height: 230px;
+    }
+}
+
+@keyframes show_window_del {
+    0% {
+        -webkit-filter: blur(0px);
+    }
+
+    100% {
+        -webkit-filter: blur(4px);
+    }
+}
+
+@keyframes close_window_del {
+    0% {
+        
+        -webkit-filter: blur(4px);
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+    }
+}
+
+#name_del_cat {
+    font-family:Consolas;
+}
+
+.window_del_cat p:last-child a {
+    background-color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: black;
+    font-family: consolas;
+}
+
+    .window_del_cat p:last-child a:nth-child(1) {
+        margin-right:10px;
+    }
+
+    .window_del_cat p:last-child a:nth-child(2) {
+        padding: 5px 17px;
+    }
+
+    .window_del_cat p:last-child a:nth-child(1):hover {
+        background-color: red;
+        color:white;
+    }
+
+    .window_del_cat p:last-child a:nth-child(2):hover {
+        background-color: #5c5c5c;
+        color: white;
+    }
+
+/*ОКНО ПРЕДУПРЕЖДЕНИЕ УДАЛЕНИЯ ЧАТА*/
+.window_del_chat {
+    display: none;
+    font-family: Segoe UI Light;
+    position: absolute;
+    z-index: 10;
+    background-color: #464646;
+    color: white;
+    left: 37%;
+    top: 30%;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    width: 400px;
+    animation: size_window_del 0.1s;
+    animation-fill-mode: forwards;
+}
+
+    .window_del_chat .head {
+        font-size: 18px;
+    }
+
+#name_del_chat {
+    font-family: Consolas;
+}
+
+.window_del_chat p:last-child a {
+    background-color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: black;
+    font-family: consolas;
+}
+
+    .window_del_chat p:last-child a:nth-child(1) {
+        margin-right: 10px;
+    }
+
+    .window_del_chat p:last-child a:nth-child(2) {
+        padding: 5px 17px;
+    }
+
+    .window_del_chat p:last-child a:nth-child(1):hover {
+        background-color: red;
+        color: white;
+    }
+
+    .window_del_chat p:last-child a:nth-child(2):hover {
+        background-color: #5c5c5c;
+        color: white;
+    }

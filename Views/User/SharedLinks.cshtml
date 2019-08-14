@@ -1,0 +1,123 @@
+﻿<script>
+    $(function () {
+        EnterFirstCategory();
+        NewSharedMessages();
+    });
+</script>
+<style>
+    .remove_share_link,
+    .save_share_link,
+    .info_message,
+    .time,
+    .description_message {
+        padding: 2px;
+        margin: 3px;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+    .remove_share_link {
+        border: 1px solid #ec5b5b;
+        color: #ec5b5b;
+    }
+
+    .save_share_link {
+        border: 1px solid #f6f706;
+        color: #f6f706;
+        cursor: pointer;
+    }
+
+    .info_message {
+    }
+
+    .btn_del_chat img{
+        margin-top: 11px;
+        margin-right: 11px;
+    }
+</style>
+@if (ViewBag.NoShareds != "null")
+{
+    <div class="category">
+        <ul type="none" class="ul_category">
+            <li class="search">
+                @using (Ajax.BeginForm("Links", "User", new AjaxOptions { UpdateTargetId = "workzone" }))
+                {
+                    <input type="search" name="search" placeholder="Найти...">
+                }
+            </li>
+            @foreach (var c in ViewBag.Sender)
+            {
+                if (c.Sender != Session["Email"].ToString())
+                {
+                    <li id="" num="" class="">
+                        <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#workzone" href="/User/ViewSharedLinks/?login_sender=@c.Sender">@c.Sender</a>
+                        <div class="btn_del_chat" style="padding:0;"><img title="удалить" id="@c.Sender" width="18px" src="~/Content/img/del.png"></div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    <div class="workzone" id="workzone">
+
+        @foreach (var l in ViewBag.Shared)
+        {
+
+            if (l.Sender == Session["Email"].ToString())
+            {
+
+         <div style="text-align:center; color:white" class="row" id="@l.Id">
+            <div class="info_message">
+                 <a id="@l.Id" class="remove_share_link" data-ajax="true" href="/User/CancelSharedLinks/@l.Id" data-ajax-mode="replace" data-ajax-update="#workzone">Отменить</a>
+                 Ви
+            </div>
+            <div class="time">@l.DateTime</div>
+            <div class="description_message">@l.Description</div>
+
+
+            @foreach (var link in l.Links)
+            {
+            <div class="row" id="@l.Id">
+                <input id="@link.Id" sender="@l.Sender" type="checkbox">
+                <div class="link">
+                    <a href="@link.Url" target="blank">@link.Url</a>
+                </div>
+                <div class="description">@link.Description</div>
+            </div>
+            }
+         </div>
+            }
+            else
+            {
+
+            <div style="text-align:center; color:white; background-color:#464646" class="row" id="@l.Id" newlinks="@l.NewShared">
+                <div class="info_message">
+                    <a id="@l.Id" class="save_share_link">Сохранить</a>
+                    @l.Sender
+                </div>
+              <div class="time">@l.DateTime</div>
+              <div class="description_message">@l.Description</div>
+            
+
+
+                @foreach (var link in l.Links)
+                {
+                    <div class="row" id="@l.Id">
+                        <input id="@link.Id" type="checkbox">
+                        <div class="link">
+                            <a href="@link.Url" target="blank">@link.Url</a>
+                        </div>
+                        <div class="description">@link.Description</div>
+                    </div>
+                }
+            </div>
+            }
+        }
+    </div>
+}
+else
+{
+    <div class="category"></div>
+    <div class="workzone" id="workzone">
+        <h2 style="text-align:center; color:white;">Вы ни с кем еще не обменивались ссылками...</h2>
+    </div>
+}

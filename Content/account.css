@@ -1,0 +1,161 @@
+﻿.Account{
+    /*position:relative;*/
+    float: right;
+    cursor: pointer;  
+    width: 486px;
+    text-align: right;
+}
+
+    .Account .red {
+        animation: alert_account 5s;
+        animation-iteration-count: 3;
+    }
+
+    @keyframes alert_account {
+        0% {
+        color:white;
+    }
+
+    50% {
+       color:red;
+    }
+
+    100% {
+        color: white;
+    }
+}
+
+@keyframes show_account{
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.Animation {
+    animation: show_account 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.change {
+    position:absolute;
+    display: none;
+    font-family: Segoe UI Light;
+    z-index: 20;
+    background-color: #464646;
+    color: white;
+    top: 410%;
+    padding-bottom: 318px;
+    border-radius: 4px;
+    text-align: center;
+    width: 420px;
+    animation: size_window_del 0.1s;
+    animation-fill-mode: forwards;
+}
+
+
+    .change  #Login, .change  #Password {
+        border: 1px solid #464646;
+        padding: 5px;
+        margin-bottom: 14px;
+        border-radius: 4px;
+        margin-top: 5px;
+        width: 222px;
+        height: 29px;
+        font-size: 15px;
+    }
+
+    .change  #enter {
+        border: 1px solid #464646;
+        padding: 5px;
+        margin-bottom: 14px;
+        border-radius: 4px;
+        margin-top: 5px;
+        width: 111px;
+        height: 29px;
+        font-size: 15px;
+    }
+
+.change #Password {
+    margin-right: 8px;
+}
+
+    .change form {
+        margin:0 auto;
+        margin-top: 10px;
+        width: 74%;
+    }
+        .change p {
+     margin:0px;
+    }
+.logining {
+    background-color: #747474;
+    color: lightgrey;
+    margin: 5px 0 0 0;
+    width: 100px !important;
+}
+
+    .logining:hover {
+        background-color: #898989;
+    }
+
+
+#show_pass {
+    color: white;
+    position: relative;
+    right: -120px;
+    top: -37px;
+    padding: 4px;
+}
+
+.errors, .error_description {
+    color: #f6f706;
+    font-family: Segoe UI Light;
+    font-size: 13px;
+}
+
+
+
+#close {
+    width: 30px;
+    position: absolute;
+    right: 12px;
+}
+
+@media (min-width: 500px) {
+    .change {
+        left: -11%;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media (min-width: 600px) {
+    .change {
+        left: -5%;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) {
+    .change {
+        left: 6%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .change {
+        left: 18%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .change {
+        left: 32%;
+    }
+}

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+    <title>YTD</title>
+    <link href="~/Content/index.css" rel="stylesheet">
+</head>
+<body link="#929292" alink="#929292" vlink="#929292">
+
+    <div class="wrapper" id="wrapper">
+
+        <div class="head">
+            LOGO
+            <div class="signIn">
+               <a href="/User/SignIn">Вход</a>
+            </div>
+        </div>
+
+        <div id="block">
+            <p class="z1" align="center">Сохраните ссылку</p>
+            <p class="z2" align="center">Логин и Пароль сгенирируються автоматически,<br>Вы их сможете изменить в любое время. </p>
+
+            <div class="add_link">
+                <form method="post" action="/User/Registration/">
+                    <div class="form_left">
+                        <input placeholder="Вставить URL" type="text" name="Url" id="Link" required="" />
+                        <textarea rows="8" name="Description" id="Description" placeholder="Введите заметку к ссылке" required=""></textarea>
+                    </div>
+
+                    <div class="form_right">
+
+                        <input type="text" name="Name" id="Name" placeholder="Введите новую категорию" required="" />
+
+                    </div>
+                    <div class="save"><p align="center"><input class="btn_submit" type="submit" id="save_link" value="Сохранить"></p></div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer"> © 2019 ВСЕ ПРАВА ЗАЩИЩЕНЫ</div>
+</body>
+</html>

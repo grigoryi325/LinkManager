@@ -1,0 +1,15 @@
+﻿<input id="@ViewBag.Link.Id" type="checkbox">
+<div class="link">
+    <a href="@ViewBag.Link.Url" target="blank">@ViewBag.Link.Url</a>
+</div>
+<div class="description">@ViewBag.Link.Description</div>
+<ul type="none" id="menu">
+    <li>
+        <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#@ViewBag.Link.Id.ToString()" href="/User/EditLink/@ViewBag.Link.Id"><img src="~/Content/img/edit.png" title="редактировать"></a>
+        @*<img id="@ViewBag.Link.Id" src="~/Content/img/menu.png">
+        <ul class="last_menu" type="none">
+            <li>@Ajax.ActionLink("Редактировать", "EditLink", "User", new { id = ViewBag.Link.Id }, new AjaxOptions { UpdateTargetId = ViewBag.Link.Id.ToString() })</li>
+            <li><a data-ajax="true" href="/User/DelLink/@ViewBag.Link.Id" data-ajax-mode="replace" data-ajax-update="#workzone" onclick="RemoveLink(this)">Удалить</a></li>
+        </ul>*@
+    </li>
+</ul>

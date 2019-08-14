@@ -1,0 +1,60 @@
+.row {
+    margin: 5px 0;
+    float: left;
+    width: 100%;
+}
+
+
+.link {
+    float: left;
+    width: 29%;
+    background-color: #3b3b3b;
+    margin-right: 5px;
+    height: 73px;
+    color: #929292;
+    cursor: pointer;
+    border-radius: 4px;
+
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    padding: 26px 5px 5px 5px; /* Поля вокруг текста */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+.link a{
+	text-decoration:none;
+    padding: 12% 37.9%;
+}
+
+.link img {
+	width: 120px;
+	margin-right: 5px;
+}
+
+.link iframe {
+    width: 70px;
+    height: 59px;
+    margin-top: -18px;
+    border-radius: 4px;
+    margin-right: 4px;  
+}
+
+.description {
+    float: left;
+    width: 67%;
+    background-color: #3b3b3b;
+    border-radius: 4px;
+    color: #d3d3d3;
+    height: 73px;
+    overflow: auto;
+    padding-right: 57px;
+}
+
+.link:hover {
+    background-color: #5c5c5c;
+}
+
+.row input {
+    float: left;
+    margin-top: 31px;
+}

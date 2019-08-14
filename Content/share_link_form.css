@@ -1,0 +1,87 @@
+﻿.share_link{
+    display: none;
+    
+    float: left;
+    /*width: 78.5%;*/
+    width: 80%;
+    background-color: #5c5c5c;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+    .share_link form {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .share_link p {
+        margin: 0;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+
+    .share_link form input, textarea, select {
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        margin-bottom: 17px;
+    }
+
+    .share_link .form_left {
+        float: left;
+        width: 60%;
+    }
+
+        .share_link .form_left input, textarea {
+            background-color: #3b3b3b;
+            border: #3b3b3b;
+            color: #b2b2b2;
+        }
+
+        .share_link .form_left textarea {
+            height: 82px;
+            resize: none;
+        }
+
+    .share_link .form_right {
+        float: left;
+        width: 40%;
+        padding: 3px;
+        color: white;
+        font-family: Segoe UI light;
+        font-size: 16px;
+    }
+
+        .share_link .form_right img {
+            width: 20%;
+            margin-right: 15px;
+        }
+
+        .share_link .form_right select, input {
+            border: none;
+        }
+
+    .share_link .btn_submit {
+        color: lightgrey;
+        border: #747474;
+        background-color: #747474;
+        cursor: pointer;
+    }
+
+        .share_link  .btn_submit:hover {
+            background-color: #898989;
+        }
+
+    .share_link .form_disable {
+        background: #5c5c5c;
+        color: #5c5c5c;
+    }
+
+.active_shared_link {
+    background-color: #5c5c5c;
+}
+
+.loginerror{
+    color:white;
+}

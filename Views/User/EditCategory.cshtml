@@ -1,0 +1,80 @@
+﻿@if (ViewBag.Error == "Error")
+{
+    <form id="#ed" action='/User/EditCategory/@ViewBag.Id' data-ajax='true' data-ajax-mode='replace' data-ajax-update='#@ViewBag.Id' method='post'><input class="error_message" type='text' name='Name' id='Name' value='@ViewBag.Name' required='' /><input class='edit_category' type='submit' value='ok'></form>
+}
+else
+{
+    <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#workzone" href="/User/Links/@ViewBag.Id">@ViewBag.Name</a>
+    <div><img id="@ViewBag.Id" title="Меню" width="20px" src="~/Content/img/edit.svg"></div>
+    <ul id="last_menu" type="none">
+        <li id="@ViewBag.Id" class="edit">Редактировать</li>
+        <li id="delete" name="@ViewBag.Name">Удалить</li>
+    </ul>
+}
+
+<script>
+    $(function () {
+
+        var error = "@ViewBag.Error";
+
+        if (error == "Error") {
+            $(".error_message").attr({ pattern: '', title: 'Категория с таким именем уже существует' });
+        }
+
+        $(document).on("keyup", ".error_message", function () {
+            $(this).removeAttr("pattern").removeAttr("title");
+        });
+
+        $("#category option").each(function () {
+            if (Number($(this).attr("value")) == @ViewBag.Id) {
+                $(this).text("@ViewBag.Name");
+                console.log("@ViewBag.Name");
+            }
+        });
+
+       
+
+
+        //var id_li;
+        //var check_menu_html = 0;
+        //$("body").on("click", ".ul_category", function (e) {
+        //    if (check_menu_html == 0) {
+        //        id_li = e.target.id;
+        //        $(".ul_category #" + id_li + " ul").css({ display: "block" }).addClass("SlideDown").removeClass("SlideUp");
+        //        check_menu_html = 1;
+        //    } else {
+        //        $(".ul_category #" + id_li + " ul").addClass("SlideUp").removeClass("SlideDown");
+        //        check_menu_html = 0;
+        //    }
+        //});
+
+
+        //$(".category").on("click", "img", function (e) {
+        //    if (check_menu_html == 0) {
+        //        id_li = e.target.id;
+        //        $(".ul_category #" + id_li + " ul").css({ display: "block" }).addClass("SlideDown").removeClass("SlideUp");
+        //        check_menu_html = 1;
+        //    } else {
+        //        $(".ul_category #" + id_li + " ul").addClass("SlideUp").removeClass("SlideDown");
+        //        check_menu_html = 0;
+        //    }
+        //});
+
+        //var check = 0;
+        //$("body").on("click", "#menu li img", function (e) {
+        //    id_link = e.target.id;
+        //    if (check == 0) {
+        //        $("#" + e.target.id + " .last_menu").addClass("SlideDownMenu").removeClass("SlideUpMenu");
+        //        check = 1;
+        //    } else {
+        //        $("#" + e.target.id + " .last_menu").addClass("SlideUpMenu").removeClass("SlideDownMenu").removeAttr("style");
+        //        check = 0;
+        //    }
+        //});
+
+        //$("body").on('click', '.edit', function () {
+        //    var name_category = $(".ul_category ." + id_li + " a").text();
+        //    $(".ul_category #" + id_li).html("<form id='ed' action='/User/EditCategory/" + id_li + "' data-ajax='true' data-ajax-mode='replace' data-ajax-update='#" + id_li + "' method='post'><input type='text' name='Name' id='Name' value='" + name_category + "' required='' /><input class='edit_category' type='submit' value='ok'></form>");
+        //});
+    });
+</script>

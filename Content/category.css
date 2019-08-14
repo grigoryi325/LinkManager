@@ -1,0 +1,145 @@
+.ul_category {
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+}
+.ul_category li{
+	margin: 5px 0;
+}
+
+.active {
+    background-color: red;
+    color: white;
+}
+.ul_category a{
+	padding:10px;
+	border-radius:4px;
+	text-decoration:none;
+	color:black;
+	text-align:center;
+	display:block;
+	background-color:white;
+}
+
+.ul_category a:hover {
+    background-color: #b2b2b2; 
+    color: black;
+}
+
+.search input{
+	padding:10px;
+	width:100%;
+	margin-bottom: 23px;
+	color:#898989 !important;
+	border:none;
+	border-radius:4px;
+	background-color:#3b3b3b !important;
+}
+
+.ul_category {
+    position: relative;
+}
+
+    .ul_category div {
+        cursor:pointer;
+        right: -7px;
+        margin-top: -38px;
+        position: absolute;
+        color: black;
+        z-index: 1;
+    }
+
+    .ul_category li form {
+        padding:0;
+        margin:0;
+
+    }
+
+        .ul_category li form input {
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            background-color: red;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .ul_category li form .edit_category {
+            cursor: pointer;
+            right: 5px;
+            position: absolute;
+            color: black;
+            z-index: 2;
+            width: 32px;
+            color: white;
+            border: none;
+            padding: 8px;
+            margin-top: 2px;
+        }
+
+#last_menu{
+    display:none;
+    margin: 0 auto;
+    background-color: #d3d3d3;
+    border: 2px solid #464646;
+    padding-left: 0;
+    text-align: center;
+    width: 90%;
+    height: 0px;
+}
+
+    #last_menu li {
+        padding: 5px;
+    }
+
+
+    #last_menu li:hover {
+        cursor: pointer;
+        background-color: #5c5c5c;
+        color: white;
+        z-index:-10;
+  }
+
+.SlideDown {
+    display:block !important;
+    animation: slidedown 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.SlideUp {
+    animation: slideup 0.5s;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes slidedown {
+
+    0% {
+        
+        height: 0px;
+        opacity: 0;
+    }
+    20% {
+        opacity:0;
+    }
+    100% {
+        height: 71px;
+        opacity: 1;
+    }
+}
+
+@keyframes slideup {
+    0% {
+        height: 71px;
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        height: 0px;
+        margin-left: -4000px;
+    }
+}
